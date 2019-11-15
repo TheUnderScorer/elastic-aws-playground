@@ -1,0 +1,12 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "module": "commonjs",
+    "sourceMap": true,
+    "outDir": "build",
+    "target": "esnext",
+    "esModuleInterop": true,
+    "types": ["node"]
+  },
+  "exclude": ["node_modules"]
+}

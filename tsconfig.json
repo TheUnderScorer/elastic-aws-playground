@@ -1,0 +1,29 @@
+{
+  "extends": "./tsconfig.base",
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "module": "commonjs",
+    "sourceMap": true,
+    "outDir": "build",
+    "target": "esnext",
+    "esModuleInterop": true,
+    "baseUrl": ".",
+    "paths": {
+      "@theunderscorer/playground-elastic": [
+        "./packages/elastic/src"
+      ],
+      "@theunderscorer/playground-postgres": [
+        "./packages/postgres/src"
+      ],
+      "@theunderscorer/playground-aws": [
+        "./packages/aws/src"
+      ]
+    },
+    "types": [
+      "node"
+    ]
+  },
+  "exclude": [
+    "node_modules"
+  ]
+}

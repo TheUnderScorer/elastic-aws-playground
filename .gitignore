@@ -1,0 +1,13 @@
+# Module related files
+node_modules
+packages/*/node_modules
+packages/*/tmp/*
+
+# Lerna files
+lerna.debug.log
+
+# Builds
+packages/*/build
+
+# IDE related files
+.idea

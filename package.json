@@ -1,0 +1,25 @@
+{
+  "name": "elastic-aws-playground",
+  "version": "1.0.10",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "lerna run build",
+    "test": "lerna run test",
+    "dev": "lerna run dev",
+    "prod": "lerna run prod",
+    "stop": "lerna run stop"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/express": "^4.17.2",
+    "lerna": "^3.18.4",
+    "ts-node-dev": "^1.0.0-pre.44",
+    "typescript": "^3.7.2"
+  },
+  "dependencies": {
+    "@elastic/elasticsearch": "^7.4.0",
+    "express": "^4.17.1"
+  }
+}

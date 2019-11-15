@@ -1,0 +1,27 @@
+{
+  "name": "@theunderscorer/playground-postgres",
+  "version": "1.0.10",
+  "description": "",
+  "main": "build/index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "dev": "docker-compose up -d && ts-node-dev src/index.ts --project tsconfig.build.json",
+    "prod": "docker-compose up -d && ts-node src/index.ts",
+    "build": "tsc -p tsconfig.build.json",
+    "stop": "docker-compose down",
+    "typeorm": "ts-node ./node_modules/typeorm/cli.js",
+    "generate-migration": "npm run typeorm migration:generate -- -f src/database/connection.static.ts -n"
+  },
+  "author": "Przemysław Żydek <przemyslaw.zydek@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "pg": "^7.12.1",
+    "typeorm": "^0.2.20"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.2"
+  }
+}

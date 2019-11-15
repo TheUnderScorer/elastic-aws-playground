@@ -1,6 +1,6 @@
 import { SQS } from 'aws-sdk';
 
-export const endpoint = 'http://localhost:4576/';
+export const endpoint = 'http://localhost:4576';
 export const queueUrl = `${endpoint}/playground`;
 
 export const client = new SQS({

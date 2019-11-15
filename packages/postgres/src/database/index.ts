@@ -5,7 +5,7 @@ export const connectToDatabase = (): Promise<Connection> => createConnection(con
 export const connectionOptions: ConnectionOptions = {
   type: 'postgres',
   url: 'postgres://postgres:password@localhost:5432/app',
-  synchronize: false,
+  synchronize: true,
   logging: true,
   entities: ['**/*.model.*'],
   migrations: ['**/migrations/*'],

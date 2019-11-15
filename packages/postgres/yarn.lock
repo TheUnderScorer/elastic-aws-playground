@@ -2,13 +2,6 @@
 # yarn lockfile v1
 
 
-"@theunderscorer/playground-aws@^1.1.5":
-  version "1.1.5"
-  resolved "https://registry.yarnpkg.com/@theunderscorer/playground-aws/-/playground-aws-1.1.5.tgz#d836e5bc67766ab9cbca6c923cd771c047efc2bb"
-  integrity sha512-+is4bQFukZMRxs/Y1Xq4DHn56IpPRaVOpfZdP0KCtOyrobta/OzPl8wsIk8eolI9R4UvsIFzcFEb9rvH7R5jmg==
-  dependencies:
-    aws-sdk "^2.571.0"
-
 "@types/body-parser@*":
   version "1.17.1"
   resolved "https://registry.yarnpkg.com/@types/body-parser/-/body-parser-1.17.1.tgz#18fcf61768fb5c30ccc508c21d6fd2e8b3bf7897"
@@ -129,7 +122,7 @@ array-flatten@1.1.1:
   resolved "https://registry.yarnpkg.com/array-flatten/-/array-flatten-1.1.1.tgz#9a5f699051b1e7073328f2a008968b64ea2955d2"
   integrity sha1-ml9pkFGx5wczKPKgCJaLZOopVdI=
 
-aws-sdk@^2.571.0, aws-sdk@^2.572.0:
+aws-sdk@^2.572.0:
   version "2.572.0"
   resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.572.0.tgz#80c82c075bdfb21fad7c66d7efbb14e75b970284"
   integrity sha512-sE9SdbnJoQTr2+rLjLlHQTfSunayhi0FuI18MmrJVgbzBu54UZoHhD9MNTYhhZqU8/vBa25Ji99BWStIwuu5Vw==

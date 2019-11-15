@@ -7,14 +7,16 @@
     "access": "public"
   },
   "scripts": {
-    "prepare": "npm run build",
+    "prepare": "yarn run build",
     "prepare-package": "docker-compose up -d",
+    "clean": "rm -rf build && rm -rf tsconfig.build.tsbuildinfo",
+    "build": "yarn run clean && tsc -p tsconfig.build.json",
     "dev": "ts-node-dev src/index.ts",
     "prod": "node build/index.js",
-    "build": "rm -rf build && tsc -p tsconfig.build.json",
     "stop": "docker-compose down",
     "typeorm": "ts-node ./node_modules/typeorm/cli.js",
-    "generate-migration": "npm run typeorm migration:generate -- -f src/database/connection.static.ts -n"
+    "generate-migration": "npm run typeorm migration:generate -- -f src/database/connection.static.ts -n",
+    "run-migrations": "npm run typeorm migration:run -- -f src/database/connection.static.ts"
   },
   "author": "Przemysław Żydek <przemyslaw.zydek@gmail.com>",
   "license": "ISC",

@@ -8,6 +8,7 @@ lerna.debug.log
 
 # Builds
 packages/*/build
+packages/*/*.tsbuildinfo
 
 # IDE related files
 .idea

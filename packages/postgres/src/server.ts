@@ -11,7 +11,6 @@ export const startServer = async (): Promise<Application> => {
   const router = Express.Router();
 
   const database = await connectToDatabase();
-  await database.runMigrations();
 
   const repository = database.getRepository(RecordModel);
 

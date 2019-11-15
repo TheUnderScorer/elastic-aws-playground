@@ -13,10 +13,10 @@
   },
   "scripts": {
     "prepare-package": "docker-compose up -d",
-    "prepare": "npm run build",
+    "clean": "rm -rf build && rm -rf tsconfig.build.tsbuildinfo",
+    "build": "yarn run clean && tsc -p tsconfig.build.json",
     "dev": "ts-node-dev src/index.ts",
     "prod": "node build/index.js",
-    "build": "rm -rf build && tsc -p tsconfig.build.json",
     "stop": "docker-compose down"
   },
   "dependencies": {

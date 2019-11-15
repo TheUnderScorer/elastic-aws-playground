@@ -1,1 +1,1 @@
-export { default as sqs } from './sqs';
+export * from './sqs';

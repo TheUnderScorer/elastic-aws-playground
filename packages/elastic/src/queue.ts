@@ -1,8 +1,16 @@
 import { Client } from '@elastic/elasticsearch';
-import { sqs } from '@theunderscorer/playground-aws';
+import { createService } from '@theunderscorer/playground-aws';
 
 export const setupQueue = (elasticClient: Client) => {
-  sqs.receiveMessage(message => {
-    console.log('Message received: ', message);
+  const service = createService();
+
+  service.receive(async (error, message) => {
+    if (error) {
+      console.error('Queue error:', error);
+
+      return;
+    }
+
+    console.log('Received message:', message);
   });
 };

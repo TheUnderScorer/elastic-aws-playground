@@ -2,6 +2,9 @@
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "module": "commonjs",
+    "rootDir": "src",
+    "incremental": true,
+    "declaration": true,
     "sourceMap": true,
     "outDir": "build",
     "target": "esnext",

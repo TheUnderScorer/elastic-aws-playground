@@ -3,6 +3,9 @@
   "compilerOptions": {
     "module": "commonjs",
     "sourceMap": true,
+    "rootDir": "src",
+    "incremental": true,
+    "declaration": true,
     "outDir": "build",
     "target": "esnext",
     "esModuleInterop": true,

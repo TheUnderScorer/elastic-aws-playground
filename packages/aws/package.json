@@ -10,6 +10,7 @@
   "license": "ISC",
   "main": "build/index.js",
   "scripts": {
+    "prepare": "npm run build",
     "build": "rm -rf build && tsc -p tsconfig.build.json"
   },
   "dependencies": {

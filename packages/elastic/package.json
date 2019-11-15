@@ -13,8 +13,9 @@
   },
   "scripts": {
     "prepare-package": "docker-compose up -d",
+    "prepare": "npm run build",
     "dev": "ts-node-dev src/index.ts",
-    "prod": "ts-node src/index.ts",
+    "prod": "node build/index.js",
     "build": "rm -rf build && tsc -p tsconfig.build.json",
     "stop": "docker-compose down"
   },

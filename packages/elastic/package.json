@@ -1,6 +1,6 @@
 {
   "name": "@theunderscorer/playground-elastic",
-  "version": "1.1.9",
+  "version": "1.2.0",
   "description": "",
   "main": "build/index.js",
   "publishConfig": {
@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "@elastic/elasticsearch": "^7.4.0",
-    "@theunderscorer/playground-aws": "^1.1.8",
+    "@theunderscorer/playground-aws": "^1.2.0",
     "express": "^4.17.1"
   },
   "author": "Przemysław Żydek <przemyslaw.zydek@gmail.com>",

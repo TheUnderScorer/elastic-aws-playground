@@ -1,5 +1,5 @@
-import { client, queueUrl } from './client';
-import { AWSError } from 'aws-sdk';
+import { createClient, queueUrl } from './client';
+import { AWSError, SQS } from 'aws-sdk';
 import { MessageList, SendMessageResult } from 'aws-sdk/clients/sqs';
 import { PromiseResult } from 'aws-sdk/lib/request';
 
@@ -13,20 +13,23 @@ export interface SQSService {
   receive<Payload = any>(callback: ReceiveCallback<Payload>): Promise<void>;
 }
 
-export type ReceiveCallback<Payload> = (error: AWSError | null, message: QueueMessage<Payload> | null) => Promise<any>;
+export type ReceiveCallback<Payload> = (error: AWSError | null, message: QueueMessage<Payload> | null) => Promise<boolean>;
 
-export const createService = (): SQSService => ({
-  send<T = any>(message: QueueMessage<T>) {
-    return client
+export class Service {
+  public client: SQS = createClient();
+
+  public send<T = any>(message: QueueMessage<T>) {
+    return this.client
       .sendMessage({
         MessageBody: JSON.stringify(message),
         QueueUrl: queueUrl,
       })
       .promise();
-  },
-  async receive<Payload = any>(callback: ReceiveCallback<Payload>) {
+  }
+
+  public async receive<Payload = any>(callback: ReceiveCallback<Payload>) {
     try {
-      const data = await client
+      const data = await this.client
         .receiveMessage({
           QueueUrl: queueUrl,
           MaxNumberOfMessages: 5,
@@ -46,17 +49,21 @@ export const createService = (): SQSService => ({
         const body = JSON.parse(message.Body as string);
 
         messagesPromises.push(
-          callback(null, body).then(() =>
-            client.deleteMessage({
+          callback(null, body).then(result => {
+            if (!result) {
+              return;
+            }
+
+            this.client.deleteMessage({
               QueueUrl: queueUrl,
               ReceiptHandle: message.ReceiptHandle as string,
-            }),
-          ),
+            });
+          }),
         );
       }
       await Promise.all(messagesPromises);
     } catch (e) {
       callback(e, null);
     }
-  },
-});
+  }
+}

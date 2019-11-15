@@ -2,7 +2,7 @@ import Express, { Application } from 'express';
 import { saveRecordAction } from './actions/save-record.action';
 import { connectToDatabase } from './database';
 import { RecordModel } from './models/record.model';
-import { createService } from '@theunderscorer/playground-aws';
+import { Service } from '@theunderscorer/playground-aws';
 
 const port = 9000;
 
@@ -14,7 +14,7 @@ export const startServer = async (): Promise<Application> => {
 
   const repository = database.getRepository(RecordModel);
 
-  const sqsService = createService();
+  const sqsService = new Service();
 
   app.use(Express.json());
   router.post('/create', saveRecordAction(repository, sqsService));

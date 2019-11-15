@@ -3,14 +3,10 @@ import { saveRecordAction } from './actions/save-record.action';
 import { connectToDatabase } from './database';
 import { RecordModel } from './models/record.model';
 import { createService } from '@theunderscorer/playground-aws';
-import * as AWS from '@theunderscorer/playground-aws';
 
 const port = 9000;
 
 export const startServer = async (): Promise<Application> => {
-  console.log({
-    AWS,
-  });
   const app = Express();
   const router = Express.Router();
 

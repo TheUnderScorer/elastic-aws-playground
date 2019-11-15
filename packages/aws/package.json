@@ -10,7 +10,6 @@
   "license": "ISC",
   "main": "build/index.js",
   "scripts": {
-    "prepare": "yarn run build",
     "clean": "rm -rf build && rm -rf tsconfig.build.tsbuildinfo",
     "build": "yarn run clean && tsc -p tsconfig.build.json"
   },

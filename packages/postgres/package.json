@@ -7,8 +7,9 @@
     "access": "public"
   },
   "scripts": {
-    "dev": "docker-compose up -d && ts-node-dev src/index.ts --project tsconfig.build.json",
-    "prod": "docker-compose up -d && ts-node src/index.ts",
+    "prepare-package": "docker-compose up -d",
+    "dev": "ts-node-dev src/index.ts --project tsconfig.build.json",
+    "prod": "ts-node src/index.ts",
     "build": "tsc -p tsconfig.build.json",
     "stop": "docker-compose down",
     "typeorm": "ts-node ./node_modules/typeorm/cli.js",

@@ -8,7 +8,8 @@
     "test": "lerna run test",
     "dev": "lerna run dev",
     "prod": "lerna run prod",
-    "stop": "lerna run stop"
+    "stop": "lerna run stop",
+    "prepare-packages": "lerna run prepare-package"
   },
   "author": "",
   "license": "ISC",

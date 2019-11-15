@@ -1,15 +1,9 @@
 {
   "compilerOptions": {
-    "declaration": true,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
     "module": "commonjs",
     "moduleResolution": "node",
     "target": "es2018",
-    "lib": [
-      "esnext",
-      "dom"
-    ],
+    "lib": ["esnext", "dom"],
     "downlevelIteration": true,
     "sourceMap": true,
     "allowSyntheticDefaultImports": true,
@@ -18,6 +12,9 @@
     "forceConsistentCasingInFileNames": true,
     "noUnusedLocals": true,
     "skipLibCheck": true,
-    "jsx": "react"
+    "jsx": "react",
+    "declaration": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true
   }
 }

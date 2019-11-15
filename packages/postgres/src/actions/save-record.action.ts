@@ -1,9 +1,9 @@
 import { NextFunction, Request, Response } from 'express';
 import { Repository } from 'typeorm';
 import { RecordModel } from '../models/record.model';
-import { QueueMessage, SQSService } from '@theunderscorer/playground-aws';
+import { QueueMessage, Service } from '@theunderscorer/playground-aws';
 
-export const saveRecordAction = (repository: Repository<RecordModel>, sqs: SQSService) => async (
+export const saveRecordAction = (repository: Repository<RecordModel>, sqs: Service) => async (
   req: Request,
   res: Response,
   next: NextFunction,

@@ -1,16 +1,10 @@
 import { createClient, queueUrl } from './client';
 import { AWSError, SQS } from 'aws-sdk';
-import { MessageList, SendMessageResult } from 'aws-sdk/clients/sqs';
-import { PromiseResult } from 'aws-sdk/lib/request';
+import { MessageList } from 'aws-sdk/clients/sqs';
 
 export interface QueueMessage<Payload = any> {
   type: string;
   payload: Payload;
-}
-
-export interface SQSService {
-  send<T = any>(message: QueueMessage): Promise<PromiseResult<SendMessageResult, AWSError>>;
-  receive<Payload = any>(callback: ReceiveCallback<Payload>): Promise<void>;
 }
 
 export type ReceiveCallback<Payload> = (error: AWSError | null, message: QueueMessage<Payload> | null) => Promise<boolean>;

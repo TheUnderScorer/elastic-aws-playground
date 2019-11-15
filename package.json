@@ -9,7 +9,7 @@
     "dev": "lerna run dev --parallel",
     "prod": "lerna run prod",
     "stop": "lerna run stop",
-    "prepare-packages": "lerna run prepare-package",
+    "prepare-packages": "lerna run prepare-package --parallel",
     "clean": "lerna run clean"
   },
   "author": "",

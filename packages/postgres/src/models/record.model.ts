@@ -1,5 +1,10 @@
 import {Column, CreateDateColumn, Entity, PrimaryGeneratedColumn} from 'typeorm';
 
+export interface RecordData {
+  title: string;
+  description: string;
+}
+
 @Entity()
 export class RecordModel {
   @PrimaryGeneratedColumn()
@@ -8,7 +13,7 @@ export class RecordModel {
   @Column({
     type: 'jsonb',
   })
-  public data!: object;
+  public data!: RecordData;
 
   @CreateDateColumn()
   public createdAt!: Date;

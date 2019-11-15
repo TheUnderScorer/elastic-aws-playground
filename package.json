@@ -6,7 +6,7 @@
   "scripts": {
     "build": "lerna run build",
     "test": "lerna run test",
-    "dev": "lerna run dev",
+    "dev": "lerna run dev --parallel",
     "prod": "lerna run prod",
     "stop": "lerna run stop",
     "prepare-packages": "lerna run prepare-package"

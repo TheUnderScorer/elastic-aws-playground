@@ -7,7 +7,10 @@ export interface QueueMessage<Payload = any> {
   payload: Payload;
 }
 
-export type ReceiveCallback<Payload> = (error: AWSError | null, message: QueueMessage<Payload> | null) => Promise<boolean>;
+export type ReceiveCallback<Payload> = (
+  error: AWSError | null,
+  message: QueueMessage<Payload> | null,
+) => Promise<boolean>;
 
 export class Service {
   public client: SQS = createClient();

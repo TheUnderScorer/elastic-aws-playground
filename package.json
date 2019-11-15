@@ -7,8 +7,8 @@
     "build": "lerna run build --stream",
     "test": "lerna run test",
     "dev": "lerna run dev --parallel",
-    "prod": "lerna run prod",
-    "stop": "lerna run stop",
+    "prod": "lerna run prod --parallel",
+    "stop": "lerna run stop --parallel",
     "prepare-packages": "lerna run prepare-package --parallel",
     "clean": "lerna run clean"
   },

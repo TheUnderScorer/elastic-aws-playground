@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@theunderscorer/playground-aws@^1.1.8":
-  version "1.1.8"
-  resolved "https://registry.yarnpkg.com/@theunderscorer/playground-aws/-/playground-aws-1.1.8.tgz#a2a04ff1ec660a30361d707ecc94002f2ec5ee69"
-  integrity sha512-8LIn/Zsnq6WeoSY//afgZBj58lq6uFzSH871m98RoBekLy6bkvtbqamhG+zQPV+OdyFEKdnG9lC/WBF5AhEeFA==
+"@theunderscorer/playground-aws@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@theunderscorer/playground-aws/-/playground-aws-1.2.0.tgz#fce732a19d0db029d16c54534893dfc7a914c875"
+  integrity sha512-s/rVFxn2vfWTFEyHZNsr7Rc/2XrXyvZ4N3djVMqu3WjMngV7yQReT7X2J4KvfYuD/JySRsq+1ttsi/rTejvCtg==
   dependencies:
     aws-sdk "^2.571.0"
 

@@ -14,6 +14,7 @@
     "build": "yarn run clean && tsc -p tsconfig.build.json"
   },
   "dependencies": {
-    "aws-sdk": "^2.571.0"
+    "aws-sdk": "^2.571.0",
+    "sqs-consumer": "^5.4.0"
   }
 }

@@ -11,7 +11,7 @@ export const setupQueue = (elasticClient: Client) => {
       return false;
     }
 
-    console.log('Received message:', message);
+    console.log('Received message from queue:', message);
 
     return true;
   });

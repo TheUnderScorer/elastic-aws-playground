@@ -1,6 +1,7 @@
 import { createClient, queueUrl } from './client';
 import { AWSError, SQS } from 'aws-sdk';
-import { MessageList } from 'aws-sdk/clients/sqs';
+import { updateAwsCredentials } from '../aws-setup';
+import { Consumer } from 'sqs-consumer';
 
 export interface QueueMessage<Payload = any> {
   type: string;
@@ -13,7 +14,18 @@ export type ReceiveCallback<Payload> = (
 ) => Promise<boolean>;
 
 export class Service {
-  public client: SQS = createClient();
+  private readonly client: SQS;
+  private static credentialsSet: boolean = false;
+
+  public constructor(client?: SQS) {
+    if (!Service.credentialsSet) {
+      updateAwsCredentials();
+
+      Service.credentialsSet = true;
+    }
+
+    this.client = client ? client : createClient();
+  }
 
   public send<T = any>(message: QueueMessage<T>) {
     return this.client
@@ -24,43 +36,23 @@ export class Service {
       .promise();
   }
 
-  public async receive<Payload = any>(callback: ReceiveCallback<Payload>) {
-    try {
-      const data = await this.client
-        .receiveMessage({
-          QueueUrl: queueUrl,
-          MaxNumberOfMessages: 5,
-        })
-        .promise();
+  public async receive<Payload = any>(callback: ReceiveCallback<Payload>): Promise<Consumer> {
+    const consumer = Consumer.create({
+      queueUrl,
+      sqs: this.client,
+      async handleMessage(message: SQS.Message): Promise<void> {
+        console.log('Message received:', message);
 
-      if (!data.Messages || !data.Messages.length) {
-        callback(null, null);
-
-        return;
-      }
-
-      const messages = data.Messages as MessageList;
-      const messagesPromises: Array<Promise<any>> = [];
-
-      for (const message of messages) {
         const body = JSON.parse(message.Body as string);
 
-        messagesPromises.push(
-          callback(null, body).then(result => {
-            if (!result) {
-              return;
-            }
+        await callback(null, body);
+      },
+    });
 
-            this.client.deleteMessage({
-              QueueUrl: queueUrl,
-              ReceiptHandle: message.ReceiptHandle as string,
-            });
-          }),
-        );
-      }
-      await Promise.all(messagesPromises);
-    } catch (e) {
-      callback(e, null);
-    }
+    consumer.on('error', err => callback(err, null));
+
+    consumer.start();
+
+    return consumer;
   }
 }

@@ -2,6 +2,7 @@
 node_modules
 packages/*/node_modules
 packages/*/tmp/*
+packages/*/yarn-error.log
 
 # Lerna files
 lerna.debug.log

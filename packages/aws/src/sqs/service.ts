@@ -47,7 +47,11 @@ export class Service {
       },
     });
 
-    consumer.on('error', err => callback(err, null));
+    consumer.on('error', err => {
+      callback(err, null);
+
+      consumer.start();
+    });
 
     consumer.start();
 

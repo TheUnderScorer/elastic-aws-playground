@@ -11,7 +11,7 @@ export interface QueueMessage<Payload = any> {
 export type ReceiveCallback<Payload> = (
   error: AWSError | null,
   message: QueueMessage<Payload> | null,
-) => Promise<boolean>;
+) => Promise<void>;
 
 export class Service {
   private readonly client: SQS;
@@ -41,8 +41,6 @@ export class Service {
       queueUrl,
       sqs: this.client,
       async handleMessage(message: SQS.Message): Promise<void> {
-        console.log('Message received:', message);
-
         const body = JSON.parse(message.Body as string);
 
         await callback(null, body);

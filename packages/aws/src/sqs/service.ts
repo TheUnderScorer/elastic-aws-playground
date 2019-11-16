@@ -8,14 +8,11 @@ export interface QueueMessage<Payload = any> {
   payload: Payload;
 }
 
-export type ReceiveCallback<Payload> = (
-  error: AWSError | null,
-  message: QueueMessage<Payload> | null,
-) => Promise<void>;
+export type ReceiveCallback<Payload> = (error: AWSError | null, message: QueueMessage<Payload> | null) => Promise<void>;
 
 export class Service {
-  private readonly client: SQS;
   private static credentialsSet: boolean = false;
+  private readonly client: SQS;
 
   public constructor(client?: SQS) {
     if (!Service.credentialsSet) {

@@ -10,7 +10,7 @@
     "prod": "lerna run prod --parallel",
     "stop": "lerna run stop --parallel",
     "prepare-packages": "lerna run prepare-package --parallel",
-    "clean": "lerna run clean"
+    "clean": "lerna run clean --parallel"
   },
   "author": "",
   "license": "ISC",

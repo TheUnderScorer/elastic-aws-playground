@@ -3,8 +3,7 @@ import { RecordModel } from '@theunderscorer/playground-postgres';
 
 export const handleRecord: QueueHandler<RecordModel> = elasticClient => async message => {
   const result = await elasticClient.index({
-    index: 'RecordModel',
-    type: 'Record',
+    index: 'record-model',
     body: {
       ...message.payload,
     },

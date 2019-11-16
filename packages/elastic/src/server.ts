@@ -1,7 +1,7 @@
 import { Client } from '@elastic/elasticsearch';
 import Express, { Application, Request, Response } from 'express';
 
-const index = 'quotes';
+const index = 'record-model';
 const port = 3000;
 
 export const startServer = (client: Client): Application => {
@@ -10,34 +10,48 @@ export const startServer = (client: Client): Application => {
   app.use(Express.json());
 
   app.get('/search', async (req: Request, res: Response) => {
-    const { query, fields = '' } = req.query;
+    const { title, description } = req.query;
 
-    const { body } = await client.search({
-      body: {
-        query: {
-          multi_match: {
-            query,
-            fields: fields.split(','),
+    try {
+      const { body } = await client.search({
+        index,
+        body: {
+          query: {
+            bool: {
+              must: [
+                {
+                  match: {
+                    'data.title': title,
+                  },
+                },
+                {
+                  match: {
+                    'data.description': description,
+                  },
+                },
+              ],
+            },
           },
         },
-      },
-    });
+      });
 
-    return res.json(body);
+      return res.json({
+        payload: body,
+      });
+    } catch (e) {
+      return res.status(500).json(e);
+    }
   });
 
-  app.post('/add', async (req: Request, res: Response) => {
-    const { author, quote } = req.body;
-
-    const { body } = await client.index({
+  app.get('/all', async (req: Request, res: Response) => {
+    const all = await client.search({
       index,
-      body: {
-        author,
-        quote,
-      },
+      from: 0,
     });
 
-    return res.json(body);
+    return res.json({
+      payload: all,
+    });
   });
 
   app.listen(port, () => console.log('Elastic started on port: ', port));

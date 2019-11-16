@@ -47,7 +47,7 @@ export class Service {
     consumer.on('error', err => {
       callback(err, null);
 
-      consumer.start();
+      consumer.stop();
     });
 
     consumer.start();
